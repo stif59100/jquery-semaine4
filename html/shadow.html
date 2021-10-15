@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow</title>
+
+    <style>
+        h1 { 
+            color: gold;
+            font-size: 45px;
+            box-shadow: gold 10px 20px 30px;
+            background: linear-gradient( red, gold, yellow
+            );
+            text-shadow: -10px -10px 20px gold, 9px 9px 8px red;
+
+        }
+
+        img {
+            box-shadow: 0 0 10px rgb(201, 190, 98);
+            border-radius: 60%;
+        }
+
+        #parent {
+            font-size: 0;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        .block{
+            margin:10px;
+            width: calc( (100% / 3) - 20px );
+            border: 1px solid black;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <h1> Les ombres</h1>
+
+    <div id="cartouche">
+
+    </div>
+    <img src="images/index.png">
+
+    <div id="parent">
+    
+        <div class="block">1</div>
+        <div class="block">2</div>
+        <div class="block">3</div>
+        <div class="block">4</div>
+        <div class="block">5</div>
+        <div class="block">6</div>
+    </div>
+</body>
+</html>

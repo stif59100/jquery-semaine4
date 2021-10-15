@@ -1,0 +1,66 @@
+.page-wrapper{
+    width: 80%;
+    margin: 20px auto;
+}
+/*********************
+*Introduction
+**********************/
+.intro {
+    width: 80%;
+    margin: 15% auto;
+}
+
+.intro header{
+    text-align:center;
+    margin-bottom: 35px;
+}
+
+.intro header h1 {
+    font-size: 2.5rem;
+}
+
+.intro header h2 {
+    font-style: italic;
+    margin-top: -35px;
+}
+
+/*********************
+*Contenu
+**********************/
+.explanation, .participation, .benefits {
+    display: table-cell;
+    width: 33%;
+    padding: 5px 10px;
+}
+/*********************
+*sidebar
+**********************/
+.wrapper {
+    display: table-cell;
+    width: 70%;
+    margin: 15px auto;
+}
+
+.wrapper div {
+    display: table-cell;
+    width: 33%;
+    padding: 5px auto;
+
+/*********************
+*media queries
+**********************/
+.wrapper div {
+
+@media screen and (max-with:1000px) {
+    
+}
+
+@media screen and (max-with:1000px) {
+    
+}
+
+@media screen and (max-with:800px) {
+    .explanation, .participation, .benefits {
+        display: block;
+        width: 100%%;
+    }

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    *{
+       box-sizing: border-box; 
+    }
+
+        img{
+        width: 25%;
+        max-width: 500px;
+        min-width: 200px;
+        border: 3px solid black;
+        padding: 10px;
+    }
+    body{
+        color : rgba(255, 0, 0, 0.733);
+        background-image: url('/images/fond.jpg');
+        text-align: center;
+        
+        ;
+    }
+
+    table{
+       color: black;
+       background-color: gold; 
+       text-align: center;
+    }
+    .paragraphe{
+
+        font-size: 2em;
+    }
+    .tableau{
+
+        font-size: 0.66em;
+        margin: 0 auto;
+        
+    }
+
+    .home{ 
+        font-style: italic;
+        color: grey;
+    }
+
+    .galerie{
+        width: 15%;
+        margin: 2%;
+        padding: 1%;
+        background-color: gold;        
+    }
+    li {
+
+        border-bottom: 1px dashed rgba(131, 124, 161, 0.534);
+    }
+    .img-rounded {
+        width: 500px;
+        height: 500px;
+        border: 1px solid black;
+        border-radius: 20px;
+        background-image: url('images/ovh.jpg');
+        font-size: 5em;
+        font-weight: bold;
+        color:rgba(255, 255, 255, 0.42);
+        text-align: center;
+        margin: 50px auto;
+        padding: 80px;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+    ul {
+        list-style-type: none;
+    }
+
+    table {
+        border:  6px double red;
+        border-collapse: collapse;
+        background-color: white;
+        caption-side: bottom;
+    }
+</style>
+</head>
+
+<body>
+    <p class="paragraphe">Présentation de ma formation effectuée chez M2I formation</p>
+    
+    <div>
+        <img class="galerie" src="images/index.png"><br></p>  
+
+    </div>
+
+    <h2>Présentation</h2>
+    <div>
+        <img class="galerie" src="images/moi.jpg"><br></p>  
+    <form>
+        <table border="5" width="30%" class="tableau">
+            <caption>Identité</caption>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <button type="submit"envoyer>Envoyer</button>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+            <td rowspan="3">Mes informations personnelles</td>
+            <td> Nom :</td>
+            <td><input type="text" name="nom" placeholder="votre nom ici"></td>
+            </tr>
+            <tr>
+                <td> Age</td>
+                <td><input type="number" name="age" min="1" max="99" placeholder="votre âge"></tr>
+            <tr>
+                <td> Profession</td>
+                <td>
+                    <select name="profession">
+                        <option> Développeur</option>
+                        <option> Webdesigner</option>
+                        <option> Tech lead</option>
+                        <option> Formateur</option>
+                    </select>
+                </td>
+            </tr>
+            
+
+        </tbody>
+      </table>
+    </form>
+    <h2>Mon parcours professionnel</h2>   
+    <div class="img-rounded"></div> </div>
+    
+    <ul>
+
+        <li class="home"><a href="home.html"> home</a>   </li>
+        <li><a href="langage.html"> langage</a> </li>
+
+
+    </ul>
+
+
+</body>
+</html>

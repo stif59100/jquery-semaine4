@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+          }
+
+        html {
+            font-size: 0;
+        }            
+        .box{
+            width: 50%;
+            height: 300px;
+            border: 1px solid black;
+            background-color: rgb(170, 218, 240);
+            display: inline-block;
+        }
+
+        .with-padding {
+            padding: 10px;
+                }
+        nav { 
+            background-color: black;
+        }
+        li{
+            display: inline-block;
+            font-size: 18px;
+            width: 18%;
+            margin-right: 2%;
+            border: 1px solid red;
+            min-width: 120px;
+            color: goldenrod;
+            
+        }
+
+        #chapo {
+            display: table-row; 
+            font-size: 16px;
+        }
+
+        #chapo p {
+            vertical-align: top;
+            width: 50%;
+            display: table-cell;
+            padding: 10px;
+            background-color: beige;
+            border-bottom: 1px solid black
+    
+        }
+
+        .paragraphe-separator {
+            border-right: 1px solid black;
+            
+        }
+
+        @media screen and (max-width: 600px) {
+            #chapo p {
+                width: 100%;
+                display: block;
+            }
+            .box {
+                width: 100%;
+                display: block;
+            }
+                             
+        }
+        @media screen and (orientation: landscape) {
+                .box {
+                    background-color: brown;
+                }
+            }
+            @media screen and ( max-width: 300px) {
+                .box{
+                    display:none;}
+                }
+            }
+                
+            }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li> Accueil</li>
+            <li> Produits</li>
+            <li> Contact</li>
+            <li> Login </li>
+            <li> Inscription</li>
+        </ul>
+    </nav>
+    <div class="box"> </div>
+    <div class="box with-padding"></div>
+    <div id="chapo">
+        <p class="paragraphe-separator">
+            
+
+            Dum haec in oriente aguntur, Arelate hiemem agens Constantius post theatralis ludos atque circenses ambitioso editos apparatu diem sextum idus Octobres, qui imperii eius annum tricensimum terminabat, insolentiae pondera gravius librans, siquid dubium deferebatur aut falsum, pro liquido accipiens et conperto, inter alia excarnificatum Gerontium Magnentianae comitem partis exulari maerore multavit.
+
+            Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.
+
+            Postremo ad id indignitatis est ventum, ut cum peregrini ob formidatam haut ita dudum alimentorum inopiam pellerentur ab urbe praecipites, sectatoribus disciplinarum liberalium inpendio paucis sine respiratione ulla extrusis, tenerentur minimarum adseclae veri, quique id simularunt ad tempus, et tria milia saltatricum ne interpellata quidem cum choris totidemque remanerent magistris.
+
+        </p>
+
+        <p>
+            Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, ut par sit ratio acceptorum et datorum. Divitior mihi et affluentior videtur esse vera amicitia nec observare restricte, ne plus reddat quam acceperit; neque enim verendum est, ne quid excidat, aut ne quid in terram defluat, aut ne plus aequo quid in amicitiam congeratur.
+
+            Et interdum acciderat, ut siquid in penetrali secreto nullo citerioris vitae ministro praesente paterfamilias uxori susurrasset in aurem, velut Amphiarao referente aut Marcio, quondam vatibus inclitis, postridie disceret imperator. ideoque etiam parietes arcanorum soli conscii timebantur.
+            
+            Quibus occurrere bene pertinax miles explicatis ordinibus parans hastisque feriens scuta qui habitus iram pugnantium concitat et dolorem proximos iam gestu terrebat sed eum in certamen alacriter consurgentem revocavere ductores rati intempestivum anceps subire certamen cum haut longe muri distarent, quorum tutela securitas poterat in solido locari cunctorum.
+            
+            Hanc regionem praestitutis celebritati diebus invadere parans dux ante edictus per solitudines Aboraeque amnis herbidas ripas, suorum indicio proditus, qui admissi flagitii metu exagitati ad praesidia descivere Romana. absque ullo egressus effectu deinde tabescebat immobilis.
+            
+            Novitates autem si spem adferunt, ut tamquam in herbis non fallacibus fructus appareat, non sunt illae quidem repudiandae, vetustas tamen suo loco conservanda; maxima est enim vis vetustatis et consuetudinis. Quin in ipso equo, cuius modo feci mentionem, si nulla res impediat, nemo est, quin eo, quo consuevit, libentius utatur quam intractato et novo. Nec vero in hoc quod est animal, sed in iis etiam quae sunt inanima, consuetudo valet, cum locis ipsis delectemur, montuosis etiam et silvestribus, in quibus diutius commorati sumus.
+            
+        
+        </p>
+
+    </div>
+</body>
+</html>

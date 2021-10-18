@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+
+<body id="page">
+    <h2>Les langues</h2>
+    <ul id="languages">
+        <li class="item">Français</li>
+        <li class="item">Anglais</li>
+        <li class="item">Japonais</li>
+    </ul>
+    <h2>Les pays</h2>
+    <ul id="countries">
+        <li class="item">France</li>
+        <li class="item">Royaume Uni</li>
+        <li class="item">Japon</li>
+    </ul>
+
+    <script>
+        const h2 = document.querySelectorAll("h2");
+        // Remplacement de la balise
+        h2[0].outerHTML = "<h5>Liste de langues</h5>";
+        // Modification du contenu de la balise
+        h2[1].innerHTML = "<em>Liste des pays</em>";
+        const countries = document.getElementById("countries");
+        // Suppression des éléments de la liste
+        countries.innerHTML = "";
+        const languagesItems = document.querySelectorAll("#languages li");
+        // Ajout d'une étoile à chaque élément
+        for (item of languagesItems) {
+            item.innerText += "*";
+        }
+
+        // recherche pour savoir quel caractère commence par fr
+        let p = "Framboise";
+        console.log(p.startsWith("fr")); 
+
+    </script>
+</body>
+
+</html>

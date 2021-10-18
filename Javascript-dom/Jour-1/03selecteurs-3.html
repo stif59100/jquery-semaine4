@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-02</title>
+</head>
+<body id="page">
+<h2>Les langues</h2>
+<ul id="languages">
+    <li class="item">Français</li>
+    <li class="item">Anglais</li>
+    <li class="item">Japonais</li>
+</ul>
+<h2>Les pays</h2>
+<ul id="countries">
+    <li class="item">France</li>
+    <li class="item">Royaume Uni</li>
+    <li class="item">Japon</li>
+</ul>
+
+<script>
+    const listePays = document.getElementById("countries")
+    console.log(listePays)
+
+    const pays = document.querySelectorAll("#countries .item" )
+    console.log(pays);
+
+    const tableauPays = []
+
+    for(let item of pays){
+        tableauPays.push(item.textContent);
+        console.log(tableauPays);
+    }
+
+    for ( let k in tableauPays) {
+    let recherche = tableauPays[k].startsWith("fr");
+    console.log(recherche);
+    if (recherche == true){
+        italique[k].innerHtml = "<em>" + tableauPays[k] + "</em>";
+    }
+    }
+
+   // h2[1].innerHTML = "<em>Liste des pays</em>";
+     //   const countries = document.getElementById("countries");
+       // console.log(p.startsWith("fr"));
+</script>
+</body>
+</html>

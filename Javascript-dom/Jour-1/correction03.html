@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+
+<body id="page">
+    <h2>Les langues</h2>
+    <ul id="languages">
+        <li class="item">Français</li>
+        <li class="item">Anglais</li>
+        <li class="item">Japonais</li>
+    </ul>
+    <h2>Les pays</h2>
+    <ul id="countries">
+        <li class="item">France</li>
+        <li class="item">Royaume Uni</li>
+        <li class="item">Japon</li>
+    </ul>
+
+    <script>
+        // récupérer la liste des pays dans un tableau
+
+        // cibler tous les éléments .item sur la page
+        const listePaysHtml = document.querySelectorAll("#countries .item");
+        const pays = [];
+        // boucle sur tous les éléments .item
+        for (let element of listePaysHtml) {
+            //ajout du texte de l'élement à tableau pays
+            pays.push(element.textContent)
+        }
+        console.log(pays)
+
+        //--------------------------------------------
+        // Mettre en italique les items qui commencent pas fr
+
+
+
+        // Cibler tous les items
+
+        const elementsDeListe = document.querySelectorAll("li");
+
+        // Boucle sur tous les éléments li de la page
+
+        for (let element of elementsDeListe) {
+
+            // test si element commence par fr
+
+            if (element.textContent.startsWith("Fr") == true) {
+
+                // mettre en italique
+
+                element.innerHTML = "<em>" + element.textContent + "</em>";
+
+            }
+
+        }
+
+        //effacer tout le contenu de la page
+        //document.getElementById("page").innerHtml = "";
+
+        //cibler la liste des pays
+
+        const ulPays = document.getElementById("countries");
+        // récupère l'ensemble du code html de la cible
+        const contenuUlPays = ulPays.outerHTML;
+        //cibler body
+        const body = document.querySelector("body")
+        // ecriture dans le body
+        body.innerHTML = contenuUlPays + body.innerHTML;
+
+        const h2 = document.querySelectorAll("h2")
+        for (let title of h2){
+            title.style.color = "red";
+        }
+    </script>
+</body>
+
+</html>

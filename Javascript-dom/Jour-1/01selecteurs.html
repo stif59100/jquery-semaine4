@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sélecteurs</title>
+
+</head>
+
+<body>
+
+    <h2>Les langages</h2>
+    <ul id="info">
+
+        <li>Java</li>
+        <li>Python</li>
+        <li>C++</li>
+        <li>Ada</li>
+        <li>Scala</li>
+        <li>Haskell</li>
+
+    </ul>
+    <h2>Les pays</h2>
+    <ul id="pays">
+
+        <li>France</li>
+        <li>Allemagne</li>
+        <li>Brésil</li>
+        <li>Japon</li>
+
+    </ul>
+    <script>
+        // Ciblage du premier h2
+        const titre = document.querySelector("h2");
+        console.log(titre);
+        // Modification du texte du titre
+        titre.innerHTML += " <em>Informatique</em>";
+
+        // Ciblage de tous les li
+        const langages = document.querySelectorAll("#info li");
+        console.log(langages);
+
+        function triListeHTML(selecteur) {
+            // Ciblage de tous les éléments de la liste
+            const listeHtml = document.querySelectorAll(selecteur);
+            // création d'un tableau pour stocker les valeurs
+            const valeurs = [];
+
+
+            // Création d'un tableau pour stocker les langages
+            const tableauLangages = [];
+            // Boucle sur l'ensemble des li
+            for (let item of listeHtml) {
+                // Insertion du texte du li dans le tableau
+                valeurs.push(item.textContent);
+            }
+            // tri sur le tableau
+            valeurs.sort();
+            // Réintégration de la liste triée dans le DOM
+            // boucle sur les clefs
+            for (let index in listeHtml) {
+                listeHtml[index].textContent = valeurs[index];
+            }
+            console.log(tableauLangages);
+        }
+    </script>
+</body>
+
+</html>

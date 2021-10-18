@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Attributs HTML</title>
+    <style>
+        .item {
+            background-color: black;
+            color: yellow;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div class="form-group">
+            <label for="password">Login</label>
+            <input type="password" name="pwd" id="password">
+            <p class="message"></p>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="text" name="login" id="login" required>
+            <p class="message"></p>
+        </div>
+        <div class="form-group">
+            <label for="languages">Langages</label>
+            <select name="languages" id="languages">
+                <option>Javascript</option>
+                <option>Python</option>
+                <option>C++</option>
+                <option>Dart</option>
+            </select>
+        </div>
+    </form>
+
+    <img src="https://e1.pngegg.com/pngimages/885/534/png-
+clipart-herbe-verte-nodejs-javascript-reagir-moyenne-angularjs-
+logo-symbole.png" id="logo">
+
+    <ul id="js-ressources">
+        <li>
+            <a href="https://developer.mozilla.org/" class="item">
+                MDN
+            </a>
+        </li>
+        <li>
+            <a href="http://jsforcats.com/">
+                Javascript for cats
+            </a>
+        </li>
+        <li>
+            <a href="https://eloquentjavascript.net/">
+                Eloquent Javascript
+            </a>
+        </li>
+        <li>
+            <a href="ma-page.html">
+                Eloquent Javascript
+            </a>
+        </li>
+    </ul>
+
+    <script>
+        // changer la saisie d'un mdp
+        const passwordInput = document.getElementById("password");
+        passwordInput.setAttribute("type", "text");
+        passwordInput.setAttribute("required","");
+
+        const logoImg = document.getElementById("logo");
+        logoImg.setAttribute("src", "https://picsum.photos/300")
+
+        // gestion des liens externes
+        // cibler tous les liens
+        // boucler sur l'ensemble des liens
+        // tester si la href du lien commence par http
+        // si oui alors ajouter un attribut target avec la valeur "_blank"
+
+        const links = document.querySelectorAll("a");
+        
+        for (let item of links) {
+            let href = item.getAttribute("href");
+            if (href.startsWith("http://") == true) {
+
+
+                item.setAttribute("target", "_blank")
+                item.classList.add("item")
+            }   
+        }
+
+        // suppression des attributs required sur les inputs
+
+        //ciblage des inputs
+        //boucler sur tous les éléments
+        // enlever l'attribut required
+
+        const attrImput = document.querySelectorAll("input");
+        for ( let inputs of attrImput){
+                inputs.removeAttribute("required")
+        }
+
+    </script>
+</body>
+
+</html>

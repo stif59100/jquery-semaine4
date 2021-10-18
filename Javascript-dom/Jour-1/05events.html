@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .alert {
+        background-color: red;
+        color: gold;
+    }
+</style>
+</head>
+<body>
+    <button id="bt1">Cliquez</button>
+    <button id="bt2">Autre bouton</button>
+    <button id="bt3">encore un autre bouton</button>
+    <h1>Evènement</h1>
+    <script>
+
+        const contenu = document.querySelector("body")
+        //cibler le bouton
+        const bt1 = document.getElementById("bt1")
+        const bt2 = document.getElementById("bt2")
+        const bt3 = document.getElementById("bt3")
+        
+
+        const body = document.querySelector("body")
+
+        // événement clique
+        bt1.onclick = function(){
+            //changer la couleur de fond de la page
+           // document.querySelector("body").style.backgroundColor=("red")
+           document.querySelector("body").classList.toggle("alert");
+        }
+
+        //function qui sera exécutée lors du clic sur le bt2
+        function btClickHandler(){
+            body.style.fontSize = "32px";
+        }
+        // attacher l'évènement sur bt2
+        bt2.onclick = btClickHandler;
+
+        // la même fonction associée à l'évènement clic
+        //document.getElementById("bt3").onclick = btClickHandler;
+
+        bt3.onclick = btClickHandler
+        bt3.onmouseover= function(){
+            bt3.style.backgroundColor = "yellow";
+        }
+        bt3.onmouseout = function (){
+            bt3.style.backgroundColor = "";
+        }
+    </script>
+</body>
+</html>

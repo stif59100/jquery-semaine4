@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="" id="theme">
+    <title>Paragraphe</title>
+
+    <style>
+        .survol {
+            background-color: red;
+            color: gold;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            const bouton = document.getElementById("bt")
+            const p = document.querySelector("p")
+
+
+            //gestion de l'évènment
+            bt.onclick = function () {
+                if (p.style.display === "none") {
+                    p.style.display = "block"
+                }
+                else {
+                    p.style.display = "none";
+                }
+            }
+            // changement de fond sur le survol du paragraphe
+
+            p.addEventListener("mouseover", function () {
+                p.classList.add("survol");
+            });
+            p.addEventListener("mouseout", function () {
+                p.classList.remove("survol");
+            })
+            const BtSombre = document.getElementById("Theme sombre")
+            const BtAutomne = document.getElementById("Theme automne")
+            const themeLink = document.getElementById("theme")
+
+            BtSombre.onclick = function () {
+                themeLink.setAttribute("href", "theme-sombre.css")
+            }
+
+            BtAutomne.onclick = function () {
+                themeLink.setAttribute("href", "theme-automne.css")
+            }
+
+        } // fin du onloaw
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <button id="Theme sombre"> Theme Sombre</button>
+        <button id="Theme automne"> Theme Automne</button>
+    </div>
+
+    <button id='bt'>Cliquez ici</button>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae corporis beatae voluptatibus eius possimus
+        suscipit. Magnam consequuntur id, ratione sunt esse quibusdam quis eius similique quod recusandae aperiam iure
+        delectus.<br>
+
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, beatae ipsum! Officia sed, explicabo est
+        aperiam ducimus amet provident rerum nam obcaecati laudantium ratione exercitationem magni? Veritatis
+        consequuntur doloribus sapiente.
+    </p>
+</body>
+
+</html>

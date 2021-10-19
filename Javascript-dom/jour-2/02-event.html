@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+    <script>
+
+        window.onload = function () {
+            /*            
+            document.getElementById("bt1").onclick = function(){
+                       bt1.textContent = "Je suis cliqué";
+                        }
+            
+            document.getElementById("bt2").onclick = function () {            
+            bt2.textContent = "Je suis cliqué";            
+            }
+            
+            document.getElementById("bt3").onclick = function () {            
+            bt3.textContent = "Je suis cliqué";            
+            }
+                       */
+
+            // Fonction qui gère les clic sur les boutons
+            function handleClick(ev) {
+                /*
+                               console.log(this);
+                                console.log(ev.target);
+                                */
+
+                // Récupération de la valeur de l'attribut message
+                // le || permet de définir une valeur par défaut
+
+                let message = ev.target.getAttribute("data-message") || "Je suis cliqué";
+
+                // On tente de récupérer la couleur
+                // on change la couleur seulement si elle existe
+                let dataColor = ev.target.getAttribute("data-color");
+                if(dataColor !== null){
+                    ev.target.style.backgroundColor = dataColor;
+                }
+                ev.target.textContent = message;
+                
+            }
+
+            // Ciblage de l'ensemble des boutons
+            buttonList = document.querySelectorAll("button");
+            // Attribution de l'événement click à tous les boutons
+            for (bt of buttonList) {
+                bt.onclick = handleClick;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+
+
+    <button id="bt1" data-message="Je suis vraiment bien cliqué">cliquez-moi</button>
+    <button id="bt2" data-color="red">cliquez-moi</button>
+    <button id="bt3" data-color="green">cliquez-moi</button>
+    <button>cliquez-moi</button>
+    <button>cliquez-moi</button>
+    <button>cliquez-moi</button>
+    <button>cliquez-moi</button>
+    <button>cliquez-moi</button>
+    <button>cliquez-moi</button>
+
+</body>
+
+</html>

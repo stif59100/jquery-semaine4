@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+    <script>
+        window.onload = function () {
+            const imgList = document.querySelectorAll("img");
+            const imgClickHandler = function (event) {
+                // désactive le comportement par défaut
+                event.preventDefault();
+                alert("téléchargement des images interdit");
+            }
+            for(let item of imgList){
+                item.oncontextmenu = imgClickHandler;
+            }
+        }
+    </script>
+</head>
+<body>
+<img src="https://placekitten.com/640/360">
+</body>
+</html>

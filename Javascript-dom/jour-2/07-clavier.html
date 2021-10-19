@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clavier</title>
+
+    <script>
+
+        window.onload = function () {
+            const blockElement = document.getElementById("block");
+            // Touche enfoncée
+            window.onkeydown = function (event) {
+                event.preventDefault();
+                if (event.key === "o" && event.ctrlKey) {
+                    // Affiche le contenu avec CTRL + o
+                    blockElement.style.display = "block";
+                } else if (event.key === "f" && event.ctrlKey) {
+                    // Masque le contenu avec CTRL + f
+                    blockElement.style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="block">Ici un bloc</div>
+</body>
+
+</html>

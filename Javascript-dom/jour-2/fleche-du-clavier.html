@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>square</title>
+    <style>
+        #spaceship {
+            position: absolute;
+            width: 150px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            const square = {
+                target: document.getElementById("spaceship"),
+                x: 5,
+                y: 5,
+                rotation: 0;
+                show: function () {
+                    this.target.style.transform "rotate(" + this.rotation + "deg)"
+                    this.target.style.left = this.x + "px";
+                    this.target.style.top = this.y + "px";
+                }
+            }
+        
+
+        window.onkeydown = function (event) {
+            if (event.key === "ArrowRight") {
+                square.x += 5;
+            } else if (event.key === "ArrowLeft") {
+                square.y -= 5;
+            } else if (event.key === "ArrowUP") {
+                square.move(5);
+            } else if (event.key === "ArrowDown") {
+                square.move(-5);
+            }
+
+            square.show();
+        }
+        square.show();
+        }
+    </script>
+</head>
+
+<body>
+    <div id="spaceship"><img src="/Javascript-dom/jour-2/MicrosoftTeams-image.png"></div>
+
+
+
+</body>
+
+</html>

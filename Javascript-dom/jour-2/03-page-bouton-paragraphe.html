@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="" id="theme">
+    <title>Paragraphes</title>
+    <style>
+        .survol {
+            background-color: antiquewhite;
+            text-decoration: underline;
+        }
+
+        div {
+            margin: 10px;
+        }
+
+        m .bt-theme-actif {
+            box-shadow: 0 0 5px yellow;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // Ciblage des éléments
+            const bt = document.getElementById("bt");
+            const p = document.querySelector("p");
+
+            // Gestion de l'événement
+            bt.onclick = function (ev) {
+                console.log(ev);
+                if (p.style.display === "none") {
+                    // Affiche le parapgraphe
+                    p.style.display = "block"
+                } else {
+                    // masque le paragraphe
+                    p.style.display = "none";
+                }
+            }
+
+            // changement de couleur de fond sur le survol du paragraphe
+            p.addEventListener("mouseover", function () {
+                p.classList.add("survol");
+            });
+
+            p.addEventListener("mouseout", function () {
+                p.classList.remove("survol");
+            });
+
+
+            // Gestion des thèmes
+            // cible des boutons
+            const themeButtons = document.querySelectorAll("#theme-buttons button");
+            console.log(themeButtons);
+            // Cible la balise link
+            const themeLink = document.getElementById("theme");
+
+            // fonction de changement de theme
+            function changeTheme(ev) {
+                let themeName = ev.target.getAttribute("data-theme");
+                if (themeName != null) {
+                    themeLink.setAttribute("href", themeName + ".css");
+                    // sur l'ensemble des boutons on enlève la classe bt-theme--actif
+                    for (let bt of themeButtons){
+                        bt.classList.remove("bt-theme-actif")
+                    }
+                    // marquer la sélection du bouton
+                    ev.target.classList.add("bt-theme-actif")
+                }
+            }
+
+            // Attacher la fonction aux boutons sur l'événement click
+            for (let bt of themeButtons) {
+                bt.onclick = changeTheme;
+            }
+
+        } // fin de onload
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+    <div id="theme-buttons">
+        <button data-theme="theme-sombre">Thème sombre</button>
+        <button data-theme="theme-automne">Thème automne</button>
+        <button data-theme="theme-glace">Thème glace</button>
+    </div>
+
+    <button id="bt">Masquer le texte</button>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime explicabo placeat unde repellendus id vero
+        pariatur facilis. Error non corporis quod eum cupiditate. Asperiores rerum possimus dolores neque? Vitae,
+        consequatur.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae commodi aliquam doloribus qui inventore
+        assumenda? Magni vitae architecto doloribus praesentium mollitia, fugiat necessitatibus porro blanditiis
+        assumenda quidem explicabo eligendi nihil!
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .bloc {
+
+            background-color: grey;
+            color: white;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+        }
+
+        body {
+            cursor: none;
+        }
+
+        #astuce {
+            width: 300px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 7em;
+            background-color: bisque;
+            position: absolute
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            const tip = document.getElementById("astuce")
+            const buttonList = document.querySelectorAll("td button");
+            for (bt of buttonList) {
+                bt.onclick = function (ev) {
+                    const tr = ev.target.parentElement.parentElement
+                    tr.style.backgroundColor = "yellow"
+                    console.log(tr)
+
+                }
+                //affichage de la bulle onmouseover
+
+                bt.onmouseover = function (ev) {
+                    tip.classList.remove("hidden");
+                    tip.style.left = ev.x + "px";
+                    tip.style.top = ev.y + "px";
+                }
+                // masquer l'astuce onmouseout
+                bt.onmouseout = function(){
+                    tip.classList.add("hidden")
+                }
+                // au déplacement de la souris l'astuce se déplace aussi
+                bt.onmousemove = function(ev){
+                    tip.style.left = ev.x + "px";
+                    tip.style.top = ev.y + "px";
+                }
+            }
+            //window.onmousemove = function(ev){
+            //console.log(ev);
+
+            //}
+
+            //ciblage du bloc
+            /*const mouseLover = document.querySelector(".bloc");
+            window.onmousemove = function(ev){
+                mouseLover.style.left = (ev.x - 10) + "px";
+                mouseLover.style.top = (ev.y - 10) + "px";
+            }*/
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <div id="astuce" class="hidden"> Cliquez pour sélectionner</div>
+    <table>
+        <tr>
+            <td>Java</td>
+            <td><button>Sélectionner</button></td>
+        </tr>
+        <tr>
+            <td>Python</td>
+            <td><button>Sélectionner</button></td>
+        </tr>
+        <tr>
+            <td>C++</td>
+            <td><button>Sélectionner</button></td>
+        </tr>
+    </table>
+    <div class="bloc">
+        <h1>Bonjour</h1>
+    </div>
+</body>
+
+</html>

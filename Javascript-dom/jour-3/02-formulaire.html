@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+
+   
+
+    <script>
+        window.onload = function () {
+            const form = document.getElementById("form");
+            const ageInput = document.getElementById("age");
+            const firstNameInput = document.getElementById("firstName");
+            const message = document.querySelector("#message")
+
+            // tableau pour enregistrer les saisies de l'utilisateur
+            const persons = [{personName: "Steeve", personAge: "34"}];
+
+            //fonction qui affiche la liste des personnes
+            function showPersons(){
+
+                //on trie le tableau
+                persons.sort(function(a,b){
+                    return a.personName.charCodeAt(0) - b.personName.charCodeAt(0);
+                })
+                // on initialise une variable pour stocker le code html
+                // qui doit être inséré dans la page
+                let html = "";
+                // on boucle sur le tableau persons
+                for (p of persons){
+                    html += message.innerHTML += "<h1>Bonjour " + p.personName + " vous avez " + p.personAge + " ans </h1>"
+                }
+                //on affiche dans la page
+                message.innerHTML = html;
+            }
+            //on réagit à l'envoi du formulaire
+            form.onsubmit = function (event) {
+                //on empêche l'envoie des données au serveur et donc le rechargement de la page
+                event.preventDefault();
+
+                // récupération de la saisie
+                const firstName = firstNameInput.value;
+                const age = ageInput.value;
+
+                if (firstName && age) {
+                    //ajout de la saisie au tableau des personnes
+                    const newPerson = {personName: firstName, personAge: age};
+                    persons.push(newPerson);
+                    console.log(persons)
+                    //affichage des données dans la page
+                    showPersons();
+
+                    // effacement des données après saisie dans le dom
+
+                    firstNameInput.value = "";
+                    ageInput.value = "";
+
+                    firstNameInput.focus();
+
+                } else {
+                    alert("Saisie incorrecte")
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName">
+        </div>
+        <label for="age">Age</label>
+        <input type="number" id="age">
+        </div>
+        <div>
+            <button type="submit">Envoyer</button>
+            <button type="reset">Annuler</button>
+        </div>
+    </form>
+    <div id="message"> </div>
+</body>
+
+</html>

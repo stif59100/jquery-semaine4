@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fabrique de boutons</title>
+    <style>
+        .btn {
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            const bt = document.querySelector("button");
+            const body = document.querySelector("body");
+            let numberOfButtons = 1;
+            body.onclick = function (event) {
+                if (event.target.localName == "button") {
+                    const newButton = event.target.cloneNode();
+                    numberOfButtons++;
+                    newButton.innerHTML = "bouton " + numberOfButtons;
+                    body.appendChild(newButton);
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button class="btn">spawn</button>
+</body>
+
+</html

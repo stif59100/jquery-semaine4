@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+
+    <script src="form-tools.js"></script>
+
+    <script>
+
+        
+        window.onload = function () {
+
+            // on cible le formulaire
+            const form = document.getElementById("form");
+            form.onsubmit = function (ev) {
+                ev.preventDefault();
+                person = formToObject(ev.target);
+                console.log(person);
+
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <label for="firstName">Prénom</label>
+            <input type="text" iname="firstName">
+        </div>
+        <div>
+            <label for="age">Age</label>
+            <input type="number" name="age">
+        </div>
+        <div>
+            <label for="adresse">Adresse</label>
+            <input type="text" name="adresse">
+        </div>
+        <div>
+            <label for="ville">Ville</label>
+            <input type="text" name="ville">
+        </div>
+
+        <div>
+            <button type="submit">Envoyer</button>
+            <button type="reset">Annuler</button>
+        </div>
+    </form>
+    <div id="message"> </div>
+</body>
+
+</html>

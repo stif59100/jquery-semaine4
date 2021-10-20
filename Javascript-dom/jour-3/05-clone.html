@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            const template = document.getElementById("template");
+            const tbody = document.querySelector("#table tbody");
+            const btAdd = document.getElementById("addRow");
+            // Ajout d'une ligne au click
+            btAdd.onclick = function () {
+                // clone de la ligne
+                const clone = template.cloneNode(true);
+                // suppression de l'id sur le clone
+                clone.removeAttribute("id");
+                // modification du texte des deux enfants (les td)
+                clone.children[0].innerHTML = "Paul";
+                clone.children[1].innerHTML = "Eluard";
+                // Ajout du clone au tableau
+                tbody.appendChild(clone);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <style>
+        #template {
+            display: none;
+        }
+    </style>
+    <button id="addRow">Ajouter une ligne</button>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="template">
+                <td>Victor</td>
+                <td>Hugo</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

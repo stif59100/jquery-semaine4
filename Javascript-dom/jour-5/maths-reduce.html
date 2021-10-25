@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moyennes de mat</title>
+
+    <script>
+        SébastienMaloronJavascript
+        58Chainage des méthodes
+        const students = [
+            {
+                name: "Patricia", grades: {
+                    maths: 12,
+                    physics: 10,
+                    english: 13
+                }
+            },
+            {
+                name: "Paul", grades: {
+                    maths: 7,
+                    physics: 8,
+                    english: 15
+                }
+            }
+        ];
+        const mathAverage = students
+            .map(function (item) {
+                return item.grades.maths;
+            })
+            .reduce(function (acc, val) {
+                return acc + val;
+            }) / students.length;
+        console.log(mathAverage);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

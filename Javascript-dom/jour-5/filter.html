@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+
+    <script>
+
+        var persons = [
+            { nom: 'toto', age: 28 },
+            { nom: 'titi', age: 13 },
+            { nom: 'tata', age: 5 },
+            { nom: 'tutu', age: 17 }
+        ];
+        // Uniquement les teenagers
+        persons = persons.filter(person => {
+            return person.age < 20 && person.age > 12;
+        });
+        console.log(persons);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

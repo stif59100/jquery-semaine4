@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find</title>
+</head>
+<script>
+    var persons = [
+        { nom: 'toto', age: 50 },
+        { nom: 'titi', age: 12 },
+        { nom: 'tata', age: 28 },
+        { nom: 'tutu', age: 17 }
+    ];
+    // Retourne la première personne qui répond true
+    // au test dans la fonction de callback
+    const p = persons.find(
+                function(item, index, source){
+                    console.log(index, source)
+                    return item.age > 20;
+                }
+    )
+    const i = persons.findIndex(
+        function (item){
+            return item.age > 20;
+        }
+    )
+    console.log(p, i);
+</script>
+
+<body>
+
+</body>
+
+</html>

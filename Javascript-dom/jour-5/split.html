@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split</title>
+
+    <script>
+        // Demander la saisie d'une phrases
+        const phrase = prompt("Votre phrase");
+        // découper la phrase en tableau
+        // avec une case par mot
+        const words = phrase.split(" ");
+        // Mélanger les mots dans le tableau
+        words.sort((item) => Math.random() - .5);
+        // Convertir le tableau en chaîne de caractère
+        const yodaSpeaking = words.join(" ");
+        console.log(yodaSpeaking);
+
+        let date = "21/09/1970";
+        let dateParts = date.split("/");
+        console.log(dateParts[2]+ "-" + dateParts[1] +"-" + dateParts[0]);
+        tmp = dateParts[0];
+        dateParts[0] = dateParts[2];
+        dateParts[2] = tmp,
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

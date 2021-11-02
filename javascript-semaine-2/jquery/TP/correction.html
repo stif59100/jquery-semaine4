@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT BOOKS</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <script>
+
+        const URL = "https://api.itbook.store/1.0/";
+
+        // le numéro de page en cours
+        let currentPage = 1;
+        let searchString = "";
+
+        let numberOfBooks;
+        const shownNumberOfPages = 10;
+        let pageSegmentNumber = 1;
+
+        // fonction pour la récupération des données
+        async function searchFromApi() {
+            //console.log(search)
+            //envoi d'une requête http à l'api
+            // pour obtenir une réponse
+            const response = await fetch(URL + "search/" + searchString + "/" + currentPage)
+
+            //test de la réponse du serveur
+            console.log(response)
+
+            // todo : gérer le message d'erreur quand response.ok = false
+            // tofix : message qui indique que l'on doit réparer quelquechose
+
+            // extraction des données json depuis la requête
+            const data = await response.json();
+
+            // test de l'extraction
+
+            console.log(data)
+
+            // affichage de la liste des livres
+            showBookList(data.books)
+
+            numberOfBooks = data.total;
+            //affichage de la pagination
+            showPagination(numberOfBooks);
+        }
+
+        //pagination
+
+        function showPagination(numberOfBooks) {
+            const numberOfPages = Math.ceil(numberOfBooks / 10);
+            const restultString = `${numberOfBooks} résulats page ${currentPage} sur ${numberOfPages}`;
+
+            console.log(restultString);
+
+            //insersion dans le dom de result string
+
+            $("#searchResult").text(restultString);
+
+            // génération des liens vers les pages
+            let html = `<li class="page-item"><a href="#" class="page-link" id="prevPageSegment">Précédent</a>
+                    </li>`;
+            const start = ((pageSegmentNumber -1) * shownNumberOfPages) + 1;
+            const end = Math.min(pageSegmentNumber * shownNumberOfPages, numberOfPages);
+            for (let page = start; page <= end; page++) {
+                let Activeclass = "";
+                if (currentPage == page) {
+                    Activeclass = "active"
+                }
+                html += `<li class="page-item" ${Activeclass}><a href="#" class="page-link page-number">${page}</a>
+                    </li>`;
+
+            }
+            html += `<li class="page-item"><a href="#" class="page-link" id="nextPageSegment">Suivant</a>
+                    </li>`;
+            // insertion de la pagination dans le dom
+            $(".pagination").html(html);
+
+        }
+        function showBookList(bookList) {
+            let html = "";
+
+            //boucle sur l'ensemble des livres
+            for (book of bookList) {
+                // création d'un élément de liste
+                html += `<li class="list-group-item d-flex justify-content-between">
+                    ${book.title}
+                    <button class="btn btn-primary" data-isbn="${book.isbn13}">détails</button>
+                </li>`
+            }
+
+            $("#listOfBooks").html(html)
+
+        }
+        async function getBookDetailsFromApi(isbn){
+            const response = await fetch(URL + "books/" + isbn);
+            // todo gérer les erreurs http
+            console.log(response)
+            // transformation de la réponse en json
+            const data = await response.json();
+            
+            // affichage du détail dans le navigateur
+            showBookDetails(data);
+        }
+
+        function showBookDetails(book){
+            $("#bookTitle").text(book.title);
+            $("#bookSubtitle").text(book.subtitle);
+            $("#bookInfos").text(`${book.year}, ISBN ${book.isbn}, ${book.pages} pages, ${book.publisher}`);
+            $("#bookAuthors").text(book.authors);
+            $("#bookImage").attr("src", book.image);
+            $("#bookText").text(book.desc);
+            $("#details").show()
+        }
+
+        $(document).ready(function () {
+            // Ciblage du formulaire
+            const searchForm = $("#form")
+
+            //ciblage du détail d'un livre
+            const bookDetails = $("#details");
+
+            //on masque le détail du livre au chargement
+            bookDetails.hide();
+
+            // réaction à l'envoi du formulaire
+            searchForm.submit(function (event) {
+                // empêcher le rechargement
+                event.preventDefault();
+
+                // Récupération des données
+                searchString = $("#searchInput").val();
+
+                // réinitialisation du numéro de page en cours
+                currentPage = 1;
+                
+                //masquer le détail 
+                $("#details").hide()
+                // premier test
+                //console.log(search);
+
+                //Envoi de la requête au serveur
+                // pour récupération des données
+                searchFromApi(searchString)
+            })
+            // réaction au clic sur la page
+            $(".pagination").delegate(".page-number", "click", function () {
+                // on enlève la classe active de tous les liens
+                $(".pagination .page-item").removeClass("active");
+                // on ajoute la class "active" sur le li parent du lien sur lequel on a cliqué
+                $(this).parent().addClass("active");
+                // on récupère le numéro de la page cliqué
+                currentPage = $(this).text();
+
+                //au changement de page on masque le détail
+                $("#details").hide();
+                //requête por récupérer les résultats qui correspondent à la page
+                searchFromApi();
+
+            });
+            $(".pagination").delegate("#nextPageSegment", "click", function(){
+                const numberOfPages = Math.ceil(numberOfBooks/10);
+                const maxSegment = Math.ceil(numberOfPages / s<wnNumberOfPages);
+                if( pageSegmentNumber < maxSegment){
+                    pageSegmentNumber++;
+                showPagination(numberOfBooks)
+                }
+                
+            });
+
+            $(".pagination").delegate("prevPageSegment", click, function(){
+                if(pageSegmentNumber < 1){
+                    pageSegmentNumber--;
+                    showPagination(numberOfBooks);
+                }
+            }
+            )
+
+            $("#listOfBooks").delegate("button", "click", function () {
+                // récupération de l'isbn
+                const isbn = $(this).data("isbn");
+                console.log(isbn);
+
+                //récupération des infos du livre
+                getBookDetailsFromApi(isbn)
+            })
+
+        });
+    </script>
+</head>
+
+<body class="container-fluid p-4">
+    <div class="row justify-content-center">
+        <header class="text-center col-md-6">
+            <h1>Liste des livres d'informatique</h1>
+            <div>
+                <form method="post" id="form">
+                    <input type="search" class="form-control" id="searchInput">
+                </form>
+            </div>
+        </header>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <h4 id="searchResult">75 résultats page 1 sur 8</h4>
+            <ul class="list-group mt-3" id="listOfBooks">
+                <li class="list-group-item d-flex justify-content-between">
+                    jquery in action
+                    <button class="btn btn-primary">détails</button>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    jquery les bases et encore plus
+                    <button class="btn btn-primary">détails</button>
+                </li>
+            </ul>
+            <nav class="mt-3">
+                <ul class="pagination">
+                    <li class="page-item active"><a href="#" class="page-link">1</a>
+                    </li>
+                    <li class="page-item"><a href="#" class="page-link">2</a>
+                    </li>
+                    <li class="page-item"><a href="#" class="page-link">3</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-7">
+            <div id="details">
+                <h2 id="bookTitle">jQuery en action</h2>
+                <h4 id="bookSubtitle">Amazing codes for great effect</h4>
+                <p>2005, ibsbn 2343564543213, 500 pages, Manning Publishing </p>
+                <p> <strong>Auteurs :</strong><span id="bookAuthors">Martin Fowler, Kevin Beck, Victor Hugo</span> </p>
+                <div class="d-flex">
+                    <img src="http://picsum.photos/300/400" id="bookImage">
+                    <p class="ps-3" id="bookText">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque nesciunt reiciendis illum. At
+                        reiciendis iste aliquam rem, optio sit soluta dolorum, fuga culpa suscipit illum doloremque
+                        architecto minus eligendi quas?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

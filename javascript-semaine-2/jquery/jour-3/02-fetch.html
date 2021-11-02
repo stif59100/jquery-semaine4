@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        // url des données
+
+        const URL = "https://randomuser.me/api?results=10"
+
+        //l'appel à l'api qui retourne une promesse
+
+        const promise = fetch(URL);
+
+        // résolution de la promese
+
+        promise
+            .then(function(response){
+                //gestion des erreurs du serveur
+                if (response.ok === false){
+                    throw "Erreur interne du serveur"
+                }
+                return response.json()
+            })
+            .then(function(data){
+                showUserInfo(data.results[0]);
+            })
+            .catch(function(error){
+                console.log("erreur", error);
+                $("#errorMessage").text("Impossible d'afficher les utilisateurs")
+            })
+
+        function showUserInfo(data){
+            const fullName = data.name.title + " "+ data.name.first + " " + data.name.last;
+            $("#userName").text(fullName)
+
+            $("#userImg").attr("src",data.picture.large);
+
+            //affichage de l'adresse numéro rue code postal ville
+            const adress = `${data.location.street.number} ${data.location.street.name} <br> ${data.location.postcode} ${data.location.city}` ;
+            $("#userAdress").html(adress);
+
+            // affichage des 10 utilisateurs
+        }
+        
+    </script>
+</head>
+
+<body>
+
+    <div id="errorMessage"></div>
+    <div id="user">
+        <div>
+            <img id="userImg">
+        </div>
+        <div>
+            <h3 id="userName"></h3>
+        </div>
+        <p id="userAdress"></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+
+    <style>
+        .error{
+            background-color: red;
+        }
+    </style>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            $("input").change(function(){
+                //récupère la valdeur saisie
+                name = $(this).val();
+                if(name.length < 4){
+                    $(this).addClass("error");
+                }else {
+                    $(this).removeClass("error")
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    
+    <!---
+        Soit un champ nom afficher ce champ en erreur(fond rouge)
+        lorsque le nombre de caractères saisis est inférieur à 4
+        lorsque le champ est valide on enlève le fond
+    -->
+
+    <input type="text">
+</body>
+</html>

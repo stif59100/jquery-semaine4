@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover</title>
+
+    <style>
+        .paragraph-hover {
+            background-color: blanchedalmond;
+        }
+
+        p {
+            cursor: pointer;
+            padding-bottom: 25px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        #deleteAction {
+            position:absolute;
+        }
+    </style>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            
+        $("p").hover(function(){
+            $(this).toggleClass("paragraph-hover");
+
+            // position y de fin de paragraphe
+            const deletePositionY = this.offsetTop + this.offsetHeight - 20;
+            
+            $("#deleteAction").css("top", deletePositionY +"px")
+        })
+        })
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, provident aperiam ex autem voluptate
+        accusamus ullam, repellendus, eveniet laboriosam sunt a ipsa labore dolor ut omnis incidunt dicta facere
+        blanditiis.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, provident aperiam ex autem voluptate
+        accusamus ullam, repellendus, eveniet laboriosam sunt a ipsa labore dolor ut omnis incidunt dicta facere
+        blanditiis.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, provident aperiam ex autem voluptate
+        accusamus ullam, repellendus, eveniet laboriosam sunt a ipsa labore dolor ut omnis incidunt dicta facere
+        blanditiis.
+    </p>
+
+    <div id="deleteAction">
+        <button>Supprimer</button>
+    </div>
+</body>
+
+</html>

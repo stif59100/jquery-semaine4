@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des utilisateurs</title>
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        // adresse de l'api
+        const API = "https://randomuser.me/api";
+        const numberOfResults = 10;
+        //déclaration de la variable qui doit stocker la liste des users
+        let userListArray = []; 
+
+        //fonction qui appelle l'api
+        async function fetchUsers(n, search= ""){
+            //création de la requête en fonction des critères
+            let url = API + "?results=" + n;
+            if(search !=""){
+                url += "&"+ search;
+            }
+            const response = await fetch(url);
+            // Récupération des données
+            const user = await response.json();
+            console.log(user);
+            // appel à la fonction d'affichage des utilisateurs
+            showUserList(user.results);
+
+            //stockage de la liste des utilisateurs pour pouvoir afficher le détail plus tard
+            userListArray = user.results;
+        }
+
+        // générer le code html de la liste des utilisateurs
+        // boucle sur le tableau userlist et construit une chaîne de caractère contenant les balises li de la liste
+        function showUserList(userList){
+            let items = "";
+            //boucle sur le tableau userlist pour chaque user de userlist
+            for (let user of userList){
+                //on ajoute à la chaîne de caractère
+                //un li qui contient le nom de l'user
+                items +=`<li>${user.name.first} ${user.name.last}</li>`;
+            }
+            //on modifie le contenue de la liste html
+            $("#userList").html(items);
+        }
+
+        function showUserInfo(user){
+            $("#userName").text(`${user.name.first} ${user.name.last}`);
+            $("#userPicture").attr("src", user.picture.large);
+            $("#userAdress").html(`${user.location.street.number} ${user.location.street.name} <br> ${user.location.postcode} ${user.location.city}`)
+            $("#userCountry").text(user.nat);
+            $("#userGender").text(user.gender);
+            $("#userAge").text(user.dob.age+ " ans");
+                                
+        }
+
+        $(document).ready(function(){
+            // appel à la fonction fetchUsers
+            fetchUsers(numberOfResults)
+
+            // réaction au clic sur un élément de liste
+            $("#userList").delegate("li", "click", function(){
+                //récupération de l'index de l'élément de liste
+                const index = $(this).index();
+                console.log(index);
+                showUserInfo(userListArray[index]);
+            })
+            //traitement du formulaire de recherche
+            $("#search").submit(function(event){
+                event.preventDefault();
+                searchString = $(this).serialize();
+                //appel à fetchUser
+                fetchUsers(numberOfResults, searchString);
+            })
+        }) 
+    </script>
+</head>
+<body>
+
+    <div>
+        <form id="search">
+            <div>
+                <h4>Genre</h4>
+                <input type="radio" name="gender" value="female">
+                <label>Féminin</label>
+                <input type="radio" name="gender" value="male">
+                <label>Masculin</label>
+            </div>
+            <div>
+                <h4>Nationalité</h4>
+                <select name="nat">
+                    <option value="fr">Française</option>
+                    <option value="ei">Irlandaise</option>
+                    <option value="dk">Danoise</option>
+                    <option value="gb">Anglaise</option>
+                    <option value="es">Espagnole</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Valider</button>
+            </div>
+        </form>
+    </div>
+    <ul id="userList">
+        <li>Paul Eluard</li>
+        <li>Rémy Belleau</li>
+    </ul>
+    <div >
+        <div id="userName"></div>
+        <img id="userPicture">
+        <h3></h3>
+        <p id="userAdress"></p>
+        <p id="userCountry"></p>
+        <p id="userGender"></p>
+        <p id="userAge"></p>
+    </div>
+    
+</body>
+</html>

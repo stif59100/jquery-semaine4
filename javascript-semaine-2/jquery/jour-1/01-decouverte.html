@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découverte de jQuery</title>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        // transforme l'objet du document de javascript
+        // en un objet jquery
+        const dom = $(document);
+        
+        //on s'assure que le dom est chargé
+        dom.ready(function(){
+            $("h2").hide();
+            console.log("début du script")
+            $("h2").show(3000, function(){
+                
+            });
+            console.log("fin du script");
+
+            // masquer les li impairs
+            //$("li:odd").hide();
+
+            //$("li:first-child").text("grenades");
+            //$("li").eq(1).text("tomates");
+            $("li").hide()
+
+            // animer les li de la liste
+            $("li").eq(0).show(1000, function(){
+                $("li").eq(1).show(1000, function(){
+                    $("li").eq(2).show(1000)
+                })
+            });
+            // ajouter une étoile devant les fruits qui ont plus de 6 caractères
+            $("li").text(function(index, oldValue){
+                if(oldValue.length >6){
+                    return oldValue + "*";
+                }else{
+                    return oldValue;
+                } 
+            });
+            //changer le type de tous les éléments input dont la classe est password
+            $("input.password").attr("type", "text");
+            console.log("la langue du doc est", $("html").attr("lang"));
+
+            //changer les styles de h2
+            const format = {
+                "font-size":"42px",
+                color: "red",
+                "background-color": "gold",
+            }
+            $("h2").css(format)
+        });
+  
+        
+    </script>
+</head>
+<body>
+    <h2 data-niveau="1    "> Un titre</h2>
+    <h2> Encore  Un titre</h2>
+    <h2> Un dernier titre</h2>
+
+    <ul>
+        <li>Pommes</li>
+        <li>poires</li>
+        <li>Fambroises</li>
+        <li>fruit de la passion</li>
+    </ul>
+
+    <input class="password" type="password">
+    <input class="password" type="password">
+</body>
+</html>

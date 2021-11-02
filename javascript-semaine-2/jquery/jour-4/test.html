@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        const countries = [
+            {code : "fr", label: "France"},
+            {code : "DE", label: "Allemagne"}
+        ];
+        var countryList = $("#countryList")
+
+        $(document).ready(function(){
+            for( var country of countries){
+                $("#countryList").append(`<label>${country.code} <br> ${country.label}</label><br>`)
+                    console.log(country.code)
+                }
+       
+        });
+    
+    </script>
+</head>
+<body>
+    <div id="countryList">
+
+    </div>
+</body>
+</html>

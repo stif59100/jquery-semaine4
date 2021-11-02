@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thèmes</title>
+    <link rel="stylesheet" type="text/css" href="">
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script type="application/javascript">
+        $(document).ready(function(){
+            $("#theme-buttons button").click(function(){
+                const themeName = $(this).data("theme");
+                $("link").attr("href", "css/" + themeName + ".css");
+            })
+        });
+    </script>
+
+</head>
+<body>
+    <h1>Les Thèmes</h1>
+
+
+    <div id="theme-buttons">
+        <button data-theme="theme-sombre">Thème sombre</button>
+        <button data-theme="theme-clair">Thème clair</button>
+    </div>
+</body>
+</html>

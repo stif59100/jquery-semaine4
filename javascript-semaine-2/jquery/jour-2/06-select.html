@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+
+
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        names = {
+            fr: ["Pierre", "Sophie", "Paul", "Martine"],
+            ei: ["Aiofa", "Saoirse", "Fionn", "Maeve"],
+            es: ["Nacho", "Pilar", "Pedro", "Isabella"]
+        }
+        $(document).ready(function () {
+            $("#countries").change(function () {
+                //on récupère la valeur de la sélection
+                const selectedCountry = $(this).val();
+
+                if ( selectedCountry in names){
+                //on récupère la liste des noms
+                const nameList = names[selectedCountry];
+                // on transforme le tableau en une chaîne de caractère
+                let namesOptions = "";
+                for(name of nameList){
+                    namesOptions += "<option>"+ name + "</option>";
+                }
+                //on change le contenu html 
+                $("#names").html(namesOptions);
+            }
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <select id="countries">
+        <option value="">Choisissez un pays</option>
+        <option value="fr">France</option>
+        <option value="ei">Irlande</option>
+        <option value="es">Espagne</option>
+    </select>
+
+    <select id="names">
+
+    </select>
+
+</body>
+
+</html>

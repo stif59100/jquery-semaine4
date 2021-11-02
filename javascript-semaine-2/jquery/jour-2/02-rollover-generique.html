@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rollover</title>
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        // Les url des deux images over et base
+        const imgOver = {
+            photo1 : "https://picsum.photos/seed/photo1-over/200",
+            photo2 : "https://picsum.photos/seed/photo2-over/200",
+            photo3 : "https://picsum.photos/seed/photo3-over/200",
+    };
+        const imgBase = {
+            photo1 : "https://picsum.photos/seed/photo1-base/200",
+            photo2 : "https://picsum.photos/seed/photo2-base/200",
+            photo3 : "https://picsum.photos/seed/photo3-base/200",
+    };
+
+        $(document).ready(function(){
+            $("img").hover(function () {
+                //obtenir l'image alternative
+                const newImage = $(this).data("hover");
+                // obtenir l'imageen cours
+                const currentImg = $(this).attr("src");
+                //définir la source de l'image
+                $(this).attr("src", newImage);
+
+                $(this).data("hover", currentImg);
+            });
+        });
+        
+    </script>
+
+
+</head>
+
+<body>
+    <img src="https://picsum.photos/seed/photo1/200" 
+        data-hover="https://picsum.photos/seed/photo1-over/200" >
+    <img src="https://picsum.photos/seed/photo2/200" 
+        data-hover="https://picsum.photos/seed/photo2-over/200" >
+    <img src="https://picsum.photos/seed/photo3/200" 
+        data-hover="https://picsum.photos/seed/photo3-over/200" >               
+    
+</body>
+
+</html>

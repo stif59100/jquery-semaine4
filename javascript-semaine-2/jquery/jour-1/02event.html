@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#bt").click(function () {
+                // Le texte actuel du bouton
+                const label = $(this).text();
+                // label par défaut
+                let newLabel = "Masquer";
+                // Cas ou on doit changer le label par défaut
+                if (label == "Masquer") {
+                    newLabel = "Afficher";
+                    
+                }
+                // Changement du texte du bouton
+                $(this).text(newLabel);
+                // Afficher ou masquer le paragraphe
+                $("#intro").toggle(1500);
+
+
+            });
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+
+
+    <button id="bt">Masquer></button>
+
+    <p id="intro">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis laudantium distinctio ullam corporis
+        voluptate accusantium dicta unde aliquid, numquam architecto cupiditate. Commodi numquam, provident itaque
+        voluptatibus deserunt suscipit illo incidunt!
+
+    </p>
+</body>
+
+</html>
